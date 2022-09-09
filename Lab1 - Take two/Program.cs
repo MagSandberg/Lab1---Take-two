@@ -19,10 +19,11 @@ while (!closeProgram)
     // Konverterar anvnändarens sträng till en char array
     char[] userInputToChar = userInput.ToCharArray();
 
+    // Platshållar-arrayer
     char[] digits = new char[inputIndex];
     char[] others = new char[inputIndex];
 
-    // Skriver ut alla siffror i userInputToChar
+    // Sorterar alla karaktärer till rätt array
     for (int i = 0; i < userInputToChar.Length; i++)
     {
         if (char.IsDigit(userInputToChar[i]))
@@ -35,6 +36,19 @@ while (!closeProgram)
         }
     }
 
+    bool dubblett = false;
+    string digitOne = "", digitTwo = "";
+
+    for (int i = 0; i < digits.Length; i++)
+    {
+        if (digits[i] * 2 == 98)
+        {
+            digitOne = digits[i].ToString();
+            digitTwo = i.ToString();
+            dubblett = true;
+        }
+    }
+    Console.WriteLine($"{dubblett} Tal 1 {digitOne} Tal 2 {digitTwo}");
     // Skapar en sträng av alla siffror
     string numbers = "";
 
