@@ -37,15 +37,29 @@ while (!closeProgram)
     }
 
     bool dubblett = false;
-    string digitOne = "", digitTwo = "";
+    bool sequence = false;
+    string sequenceFalse = "";
+    string digitOne = "", digitOneIndex = "";
+    string digitTwo = "";
 
     for (int i = 0; i < digits.Length; i++)
     {
+        //Kollar efter minst två ettor genom char desimalvärdet för 1 = 49
         if (digits[i] * 2 == 98)
         {
             digitOne = digits[i].ToString();
             digitTwo = i.ToString();
             dubblett = true;
+            //Skapa en array som innehåller dublettsträngen !!ToDo!!
+            if (char.IsDigit(userInputToChar[i]))
+            {
+                digits[i] = userInputToChar[i];
+                sequence = true;
+            }
+            else
+            {
+               sequenceFalse = "Ingen sekvens finns i din sträng";
+            }
         }
     }
     Console.WriteLine($"{dubblett} Tal 1 {digitOne} Tal 2 {digitTwo}");
