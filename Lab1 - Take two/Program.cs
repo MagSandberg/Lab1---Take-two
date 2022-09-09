@@ -1,27 +1,129 @@
-﻿//Användarens textsträng
-Console.Write("Skriv in valfri sekvens: ");
-string userInput = Console.ReadLine();
+﻿// While - loop med bool för att enkelt testa min kod
+using System;
 
-// Konverterar anvnändarens sträng till en char array
-char[] userInputToChar = userInput.ToCharArray();
-
-string firstOcc = "", secondOcc = "";
-string firstPart = "";
-string singleDigit = "";
-
-for (int i = 0; i < userInput.Length; i++)
+bool closeProgram = false;
+while (!closeProgram)
 {
-    if (char.IsDigit(userInput[i]))
+
+    // Användarens textsträng
+    Console.Write("Skriv in valfri sekvens: ");
+    string userInput = Console.ReadLine();
+
+    // Används för att ge platshållar-arrayerna rätt index.
+    int inputIndex = 0;
+    foreach (char c in userInput)
     {
-        firstOcc = userInput.Substring(userInput.IndexOf(userInputToChar[i], 0));
-        secondOcc = userInput.Substring(userInput.IndexOf(userInputToChar[i], 1));
-        singleDigit = secondOcc[i].ToString();
-        break;
+        inputIndex++;
+    }
+
+    // Konverterar anvnändarens sträng till en char array
+    char[] userInputToChar = userInput.ToCharArray();
+
+    char[] digits = new char[inputIndex];
+    char[] others = new char[inputIndex];
+
+    // Skriver ut alla siffror i userInputToChar
+    for (int i = 0; i < userInputToChar.Length; i++)
+    {
+        if (char.IsDigit(userInputToChar[i]))
+        {
+            digits[i] = userInputToChar[i];
+        }
+        else
+        {
+            others[i] = userInputToChar[i];
+        }
+    }
+
+    // Skapar en sträng av alla siffror
+    string numbers = "";
+
+    for (int i = 0; i < userInputToChar.Length; i++)
+    {
+        numbers += digits[i].ToString();
+        numbers += others[i].ToString();
+    }
+    Console.WriteLine($"{numbers}");
+    //Array.Sort(digits);
+    //string match = "";
+    //for (int i = 0; i < digits.Length; i++)
+    //{
+    //    if (i = 1)
+    //    {
+
+    //    }
+    //}
+    //Console.WriteLine(match);
+
+    // Konverterar char till int
+    //int[] digitsInts = Array.ConvertAll(digits, c => (int)Char.GetNumericValue(c));
+
+    // ReadLine som styr while-loopens bool.
+    Console.Write("\nTryck 0 för att avsluta eller valfritt tecken för att fortsätta: ");
+    string close = Console.ReadLine();
+    Console.WriteLine();
+    if (close == "0")
+    {
+        closeProgram = true;
     }
 }
 
-string[] firstOccParts = firstOcc.Split(secondOcc);
 
-firstPart += firstOccParts[0] + singleDigit;
-secondOcc += secondOcc - int.Parse(singleDigit);
-Console.WriteLine($"FP: {firstPart}\nSP: {secondOcc}");
+////Användarens textsträng
+//Console.Write("Skriv in valfri sekvens: ");
+//string userInput = Console.ReadLine();
+//string dubblet = "Finns inga dubbletter i strängen.";
+//int digitOne = 0;
+//int digitTwo = 0;
+
+//for (int i = 0; i < userInput.Length; i++)
+//{
+//    for (int j = 0; j < userInput.Length; j++)
+//    {
+//        if (char.IsDigit(userInput[i]))
+//        {
+//            digitOne = userInput[i];
+//            if (userInput[i] < userInput[j])
+//            {
+//                if (digitOne == userInput[j])
+//                {
+//                    digitTwo = userInput[j];
+//                    dubblet = "Hittad!";
+//                }
+//            }
+//        }
+
+//    }
+//}
+//Console.WriteLine($"{dubblet} Tal 1 {digitOne} Tal 2 {digitTwo}");
+
+//string sequenceOne = userInput.Substring(userInput.IndexOf(digitTwo.ToString(), digitOne));
+//Console.WriteLine(sequenceOne);
+
+//// Konverterar anvnändarens sträng till en char array
+//char[] userInputToChar = userInput.ToCharArray();
+
+//string firstOcc = "", secondOcc = "";
+//string firstPart = "";
+//string singleDigit = "";
+
+//for (int i = 0; i < userInput.Length; i++)
+//{
+//    if (userInput[i] == )
+//    {
+
+//    }
+//    if (char.IsDigit(userInput[i]))
+//    {
+//        firstOcc = userInput.Substring(userInput.IndexOf(userInputToChar[i], 0));
+//        secondOcc = userInput.Substring(userInput.IndexOf(userInputToChar[i], 1));
+//        singleDigit = secondOcc[i].ToString();
+//        break;
+//    }
+//}
+
+//string[] firstOccParts = firstOcc.Split(secondOcc);
+
+//firstPart += firstOccParts[0] + singleDigit;
+
+//Console.WriteLine($"FP: {firstPart}\nSP: {secondOcc}");
